@@ -1,4 +1,4 @@
-package harborview.vega.exception;
+package harborview.vega;
 
 public class BinarySearchException extends  RuntimeException {
     private static final long serialVersionUID = 1L;

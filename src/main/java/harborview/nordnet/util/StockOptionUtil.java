@@ -4,7 +4,7 @@ import harborview.nordnet.stockmarket.StockTicker;
 import harborview.nordnet.stockmarket.StockOptionInfo;
 import harborview.nordnet.stockmarket.StockOptionTicker;
 import harborview.nordnet.Tuple2;
-import harborview.vega.financial.StockOptionType;
+import harborview.vega.StockOptionType;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import static harborview.nordnet.stockmarket.StockOptionInfo.StatusEnum.OK;
-import static harborview.vega.financial.StockOptionType.CALL;
-import static harborview.vega.financial.StockOptionType.PUT;
+import static harborview.vega.StockOptionType.CALL;
+import static harborview.vega.StockOptionType.PUT;
 
 
 public class StockOptionUtil {

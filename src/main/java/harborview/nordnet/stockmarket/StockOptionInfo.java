@@ -1,7 +1,7 @@
 package harborview.nordnet.stockmarket;
 
 import harborview.nordnet.util.StockOptionUtil;
-import harborview.vega.financial.StockOptionType;
+import harborview.vega.StockOptionType;
 
 public class StockOptionInfo {
 

@@ -1,7 +1,7 @@
 package harborview.vega.financial.calculator;
 
 import org.springframework.stereotype.Component;
-import harborview.vega.exception.BinarySearchException;
+import harborview.vega.BinarySearchException;
 
 @Component
 public class BinarySearch {

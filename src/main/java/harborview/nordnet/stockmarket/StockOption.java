@@ -1,8 +1,8 @@
 package harborview.nordnet.stockmarket;
 
-import harborview.vega.exception.BinarySearchException;
-import harborview.vega.financial.StockOptionType;
-import harborview.vega.financial.calculator.OptionCalculator;
+import harborview.vega.BinarySearchException;
+import harborview.vega.StockOptionType;
+import harborview.vega.OptionCalculator;
 
 public class StockOption {
 

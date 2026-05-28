@@ -2,10 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package harborview.vega.financial.calculator;
+package harborview.vega;
 
 import harborview.vega.financial.StockOptionPrice;
-import harborview.vega.financial.StockOptionType;
 
 public interface OptionCalculator {
 

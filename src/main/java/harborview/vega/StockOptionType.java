@@ -1,4 +1,4 @@
-package harborview.vega.financial;
+package harborview.vega;
 
 public enum StockOptionType {
     CALL(1, "c"),

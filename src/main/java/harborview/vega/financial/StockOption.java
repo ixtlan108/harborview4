@@ -1,5 +1,7 @@
 package harborview.vega.financial;
 
+import harborview.vega.StockOptionType;
+
 public interface StockOption {
     public static int BUY = 1;
     public static int SELL = 2;

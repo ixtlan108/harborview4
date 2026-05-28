@@ -2,8 +2,8 @@ package harborview.vega.financial.calculator.binomialtree;
 
 import org.springframework.stereotype.Component;
 import harborview.vega.financial.StockOptionPrice;
-import harborview.vega.financial.StockOptionType;
-import harborview.vega.financial.calculator.OptionCalculator;
+import harborview.vega.StockOptionType;
+import harborview.vega.OptionCalculator;
 
 @Component("binomialTree")
 public class BinomialTreeCalculator implements OptionCalculator {

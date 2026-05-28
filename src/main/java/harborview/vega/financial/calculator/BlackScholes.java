@@ -1,12 +1,13 @@
 package harborview.vega.financial.calculator;
 
+import harborview.vega.OptionCalculator;
 import org.springframework.stereotype.Component;
 import harborview.vega.financial.StockOption;
 import harborview.vega.financial.StockOptionPrice;
-import harborview.vega.financial.StockOptionType;
+import harborview.vega.StockOptionType;
 
-import static harborview.vega.financial.StockOptionType.CALL;
-import static harborview.vega.financial.StockOptionType.PUT;
+import static harborview.vega.StockOptionType.CALL;
+import static harborview.vega.StockOptionType.PUT;
 
 
 @Component("blackScholes")

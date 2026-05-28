@@ -1,6 +1,6 @@
-package harborview.nordnet.vega.filters.ehlers;
+package harborview.vega.filters.ehlers;
 
-import harborview.nordnet.vega.filters.Filter;
+import harborview.vega.filters.Filter;
 
 import java.util.ArrayList;
 import java.util.List;

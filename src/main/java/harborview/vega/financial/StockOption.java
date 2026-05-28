@@ -1,4 +1,4 @@
-package harborview.nordnet.vega.financial;
+package harborview.vega.financial;
 
 public interface StockOption {
     public static int BUY = 1;

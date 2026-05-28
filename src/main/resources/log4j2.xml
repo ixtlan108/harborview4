@@ -13,8 +13,8 @@
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
         </File>
         -->
-        <RollingFile name="RollingFile" fileName="logs/photoapp.log"
-                     filePattern="logs/photoapp-%d{yyyy-MM-dd}.log"
+        <RollingFile name="RollingFile" fileName="logs/harborview4.log"
+                     filePattern="logs/harborview4-%d{yyyy-MM-dd}.log"
                      immediateFlush="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
             <Policies>

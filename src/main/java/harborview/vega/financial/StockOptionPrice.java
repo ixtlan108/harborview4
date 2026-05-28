@@ -1,4 +1,4 @@
-package harborview.nordnet.vega.financial;
+package harborview.vega.financial;
 
 import java.util.Optional;
 

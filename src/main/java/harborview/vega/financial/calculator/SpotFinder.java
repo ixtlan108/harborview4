@@ -1,4 +1,4 @@
-package harborview.nordnet.vega.financial.calculator;
+package harborview.vega.financial.calculator;
 
 public class SpotFinder implements BinarySearchAble {
     private final OptionPricing optionPricing;

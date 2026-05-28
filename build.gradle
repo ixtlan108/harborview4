@@ -30,7 +30,7 @@ dependencies {
 	implementation 'org.postgresql:postgresql'
 	implementation 'com.blazegraph:colt:2.1.4'
 	implementation 'org.htmlunit:htmlunit:5.0.0'
-	implementation 'org.apache.httpcomponents.client5:httpclient5:5.6'
+	implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.1'
 
 	//---------------- BEGIN Logging ----------------
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
@@ -42,6 +42,12 @@ dependencies {
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:4.0.1'
 	testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
 }
 
 dependencyManagement {

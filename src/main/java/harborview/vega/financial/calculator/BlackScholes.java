@@ -1,12 +1,12 @@
-package harborview.nordnet.vega.financial.calculator;
+package harborview.vega.financial.calculator;
 
 import org.springframework.stereotype.Component;
-import harborview.nordnet.vega.financial.StockOption;
-import harborview.nordnet.vega.financial.StockOptionPrice;
-import harborview.nordnet.vega.financial.StockOptionType;
+import harborview.vega.financial.StockOption;
+import harborview.vega.financial.StockOptionPrice;
+import harborview.vega.financial.StockOptionType;
 
-import static harborview.nordnet.vega.financial.StockOptionType.CALL;
-import static harborview.nordnet.vega.financial.StockOptionType.PUT;
+import static harborview.vega.financial.StockOptionType.CALL;
+import static harborview.vega.financial.StockOptionType.PUT;
 
 
 @Component("blackScholes")

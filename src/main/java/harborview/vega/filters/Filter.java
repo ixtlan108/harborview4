@@ -1,4 +1,4 @@
-package harborview.nordnet.vega.filters;
+package harborview.vega.filters;
 
 import java.util.List;
 

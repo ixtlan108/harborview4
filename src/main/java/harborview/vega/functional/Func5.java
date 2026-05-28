@@ -1,4 +1,4 @@
-package harborview.nordnet.vega.functional;
+package harborview.vega.functional;
 
 @FunctionalInterface
 public interface Func5<T1,T2,T3,T4,T5,R> {

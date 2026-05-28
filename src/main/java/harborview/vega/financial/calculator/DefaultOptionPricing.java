@@ -1,9 +1,9 @@
-package harborview.nordnet.vega.financial.calculator;
+package harborview.vega.financial.calculator;
 
 import cern.jet.random.Normal;
 import cern.jet.random.engine.MersenneTwister;
 import org.springframework.stereotype.Component;
-import harborview.nordnet.vega.financial.StockOptionType;
+import harborview.vega.financial.StockOptionType;
 
 @Component
 public class DefaultOptionPricing implements OptionPricing {

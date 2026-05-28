@@ -1,4 +1,4 @@
-package harborview.nordnet.vega.financial.calculator;
+package harborview.vega.financial.calculator;
 
 public class BinarySearchBounds {
     private final double start;

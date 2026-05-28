@@ -3,11 +3,8 @@ package harborview.nordnet.repository;
 //import harborview.adapter.RedisAdapter;
 import harborview.nordnet.downloader.Downloader;
 import harborview.nordnet.downloader.PageInfo;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import harborview.nordnet.vega.financial.calculator.OptionCalculator;
 
 @Component("adapter.demo")
 @Profile("demo")

@@ -7,33 +7,16 @@ import harborview.nordnet.*;
 import harborview.nordnet.downloader.Downloader;
 import harborview.nordnet.downloader.PageInfo;
 import harborview.nordnet.stockmarket.*;
-import harborview.nordnet.util.ListUtil;
-import harborview.nordnet.util.StockOptionUtil;
-import harborview.nordnet.vega.financial.StockOptionType;
-import harborview.nordnet.vega.financial.calculator.OptionCalculator;
-import org.apache.ibatis.ognl.internal.Cache;
 //import org.jsoup.Jsoup;
 //import org.jsoup.nodes.Element;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 //import vega.financial.StockOptionType;
 //import vega.financial.calculator.OptionCalculator;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 
 @Component

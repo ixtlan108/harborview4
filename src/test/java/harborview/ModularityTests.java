@@ -10,5 +10,6 @@ public class ModularityTests {
     @Test
     void verifiesModularStructure() {
         modules.verify();
+        modules.forEach(System.out::print);
     }
 }

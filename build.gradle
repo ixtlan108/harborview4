@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'idea'
 	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -32,10 +33,21 @@ dependencies {
 	implementation 'org.htmlunit:htmlunit:5.0.0'
 	implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.1'
 
-	//---------------- BEGIN Logging ----------------
+	//---------------- Caffeine ----------------
+	implementation 'com.github.ben-manes.caffeine:caffeine:3.2.4'
+
+	//---------------- Redis ----------------
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'redis.clients:jedis:6.0.0'
+
+	//---------------- Logging ----------------
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	implementation 'com.lmax:disruptor:4.0.0'
 
+	//---------------- Jsoup ----------------
+	implementation("org.jsoup:jsoup:1.22.2")
+
+	//---------------- Testing ----------------
 	testImplementation 'org.springframework.boot:spring-boot-starter-mail-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
@@ -44,11 +56,6 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-configurations {
-	all {
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-	}
-}
 
 dependencyManagement {
 	imports {
@@ -59,3 +66,45 @@ dependencyManagement {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+//--------------------------- Integration tests ---------------------------
+
+tasks.register('integrationTest', Test) {
+	description = "Run integration tests"
+	group = "verification"
+	testClassesDirs = sourceSets.integration.output.classesDirs
+	classpath = sourceSets.integration.runtimeClasspath
+	systemProperty('spring.profiles.active', 'integration')
+}
+
+sourceSets {
+	integration  {
+		java {
+			compileClasspath += sourceSets.main.output + sourceSets.test.output
+			runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+			srcDirs = ['src/integration/java']
+		}
+	}
+}
+
+tasks.named('integrationTest') {
+	useJUnitPlatform()
+}
+
+
+idea {
+	module {
+		testSources.from(sourceSets.integration.java.srcDirs)
+	}
+}
+
+//--------------------------- Configuration s---------------------------
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+	integrationImplementation.extendsFrom(testImplementation)
+	integrationRuntimeOnly.extendsFrom(testRuntimeOnly)
+}
+

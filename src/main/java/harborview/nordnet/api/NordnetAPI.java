@@ -3,7 +3,7 @@ package harborview.nordnet.api;
 import harborview.shared.api.response.PayloadResponse;
 import harborview.shared.api.util.ApiUtil;
 import harborview.shared.functional.Either;
-import harborview.nordnet.NordnetCore;
+import harborview.nordnet.core.NordnetCore;
 import harborview.nordnet.stockmarket.StockOption;
 import harborview.nordnet.stockmarket.StockOptionDTO;
 import harborview.nordnet.stockmarket.StockPriceDTO;

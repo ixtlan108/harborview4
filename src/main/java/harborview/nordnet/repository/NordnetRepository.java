@@ -1,11 +1,11 @@
 package harborview.nordnet.repository;
 
 
-import harborview.nordnet.*;
 import harborview.nordnet.stockmarket.StockOption;
 import harborview.nordnet.stockmarket.StockOptionTicker;
 import harborview.nordnet.stockmarket.StockPrice;
 import harborview.nordnet.stockmarket.StockTicker;
+import harborview.shared.dto.Tuple2;
 
 import java.util.List;
 

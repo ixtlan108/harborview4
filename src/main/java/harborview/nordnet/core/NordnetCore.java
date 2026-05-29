@@ -1,4 +1,4 @@
-package harborview.nordnet;
+package harborview.nordnet.core;
 
 import harborview.shared.Core;
 import harborview.shared.error.ApplicationError;

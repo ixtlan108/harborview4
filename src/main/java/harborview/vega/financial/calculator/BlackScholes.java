@@ -3,7 +3,7 @@ package harborview.vega.financial.calculator;
 import harborview.vega.OptionCalculator;
 import org.springframework.stereotype.Component;
 import harborview.vega.financial.StockOption;
-import harborview.vega.financial.StockOptionPrice;
+import harborview.vega.StockOptionPrice;
 import harborview.vega.StockOptionType;
 
 import static harborview.vega.StockOptionType.CALL;

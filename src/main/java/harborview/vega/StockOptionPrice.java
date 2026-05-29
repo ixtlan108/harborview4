@@ -1,4 +1,6 @@
-package harborview.vega.financial;
+package harborview.vega;
+
+import harborview.vega.financial.StockOption;
 
 import java.util.Optional;
 

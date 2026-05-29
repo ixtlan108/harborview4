@@ -1,7 +1,7 @@
 package harborview.vega.financial.calculator.binomialtree;
 
 import org.springframework.stereotype.Component;
-import harborview.vega.financial.StockOptionPrice;
+import harborview.vega.StockOptionPrice;
 import harborview.vega.StockOptionType;
 import harborview.vega.OptionCalculator;
 

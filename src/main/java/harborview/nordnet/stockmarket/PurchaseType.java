@@ -1,4 +1,4 @@
-package harborview.nordnet;
+package harborview.nordnet.stockmarket;
 
 public enum PurchaseType {
     PAPER(11),

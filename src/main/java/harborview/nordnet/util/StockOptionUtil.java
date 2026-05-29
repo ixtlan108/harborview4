@@ -3,7 +3,7 @@ package harborview.nordnet.util;
 import harborview.nordnet.stockmarket.StockTicker;
 import harborview.nordnet.stockmarket.StockOptionInfo;
 import harborview.nordnet.stockmarket.StockOptionTicker;
-import harborview.nordnet.Tuple2;
+import harborview.shared.dto.Tuple2;
 import harborview.vega.StockOptionType;
 
 import java.time.DayOfWeek;

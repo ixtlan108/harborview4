@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'idea'
 	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -44,11 +45,6 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-configurations {
-	all {
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-	}
-}
 
 dependencyManagement {
 	imports {
@@ -59,3 +55,45 @@ dependencyManagement {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+//--------------------------- Integration tests ---------------------------
+
+tasks.register('integrationTest', Test) {
+	description = "Run integration tests"
+	group = "verification"
+	testClassesDirs = sourceSets.integration.output.classesDirs
+	classpath = sourceSets.integration.runtimeClasspath
+	systemProperty('spring.profiles.active', 'integration')
+}
+
+sourceSets {
+	integration  {
+		java {
+			compileClasspath += sourceSets.main.output + sourceSets.test.output
+			runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+			srcDirs = ['src/integration/java']
+		}
+	}
+}
+
+tasks.named('integrationTest') {
+	useJUnitPlatform()
+}
+
+
+idea {
+	module {
+		testSources.from(sourceSets.integration.java.srcDirs)
+	}
+}
+
+//--------------------------- Configuration s---------------------------
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+	integrationImplementation.extendsFrom(testImplementation)
+	integrationRuntimeOnly.extendsFrom(testRuntimeOnly)
+}
+

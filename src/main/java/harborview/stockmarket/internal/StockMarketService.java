@@ -1,7 +1,12 @@
 package harborview.stockmarket.internal;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class StockMarketService {
+import harborview.stockmarket.StockPrice;
+import harborview.stockmarket.StockTicker;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public interface StockMarketService {
+    List<StockPrice> getStockPrices(StockTicker ticker, LocalDate fromDx);
 }

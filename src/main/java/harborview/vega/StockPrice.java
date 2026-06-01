@@ -1,4 +1,4 @@
-package harborview.vega.financial;
+package harborview.vega;
 
 
 public interface StockPrice {

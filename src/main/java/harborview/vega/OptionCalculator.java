@@ -4,8 +4,6 @@
  */
 package harborview.vega;
 
-import harborview.vega.financial.StockOptionPrice;
-
 public interface OptionCalculator {
 
     double delta(StockOptionPrice d);

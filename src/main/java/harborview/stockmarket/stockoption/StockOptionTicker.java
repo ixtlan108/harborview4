@@ -1,4 +1,4 @@
-package harborview.stockmarket.internal;
+package harborview.stockmarket.stockoption;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
-package harborview.stockmarket;
+package harborview.stockmarket.stock;
 
-import harborview.stockmarket.internal.StockMarketAdapterUtil;
+import harborview.stockmarket.service.StockMarketAdapterUtil;
 
 import java.util.Objects;
 

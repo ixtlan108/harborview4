@@ -1,7 +1,7 @@
 package harborview.maunaloa.internal;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import harborview.stockmarket.StockPrice;
+import harborview.stockmarket.stock.StockPrice;
 
 public class Candlestick {
     private final double o;

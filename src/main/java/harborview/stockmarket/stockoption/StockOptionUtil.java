@@ -1,7 +1,6 @@
-package harborview.stockmarket.internal;
+package harborview.stockmarket.stockoption;
 
 
-import harborview.stockmarket.internal.StockOptionTicker;
 import harborview.shared.dto.Tuple3;
 import harborview.shared.exception.FinancialException;
 import org.springframework.validation.ObjectError;

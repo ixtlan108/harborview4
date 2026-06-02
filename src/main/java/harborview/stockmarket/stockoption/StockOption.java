@@ -1,7 +1,7 @@
-package harborview.stockmarket;
+package harborview.stockmarket.stockoption;
 
 
-import harborview.stockmarket.internal.StockOptionUtil;
+import harborview.stockmarket.stock.Stock;
 import harborview.vega.StockOptionType;
 
 import java.sql.Date;

@@ -1,5 +1,7 @@
-package harborview.stockmarket;
+package harborview.stockmarket.stock;
 
+
+import harborview.stockmarket.stockoption.StockOption;
 
 import java.util.List;
 

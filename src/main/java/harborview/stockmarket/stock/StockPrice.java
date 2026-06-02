@@ -1,4 +1,4 @@
-package harborview.stockmarket;
+package harborview.stockmarket.stock;
 
 
 import harborview.vega.StockOptionPrice;

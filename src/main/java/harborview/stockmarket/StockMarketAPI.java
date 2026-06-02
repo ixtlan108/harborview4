@@ -1,6 +1,8 @@
 package harborview.stockmarket;
 
-import harborview.stockmarket.internal.StockMarketCore;
+import harborview.stockmarket.service.StockMarketCore;
+import harborview.stockmarket.stock.StockPrice;
+import harborview.stockmarket.stock.StockTicker;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

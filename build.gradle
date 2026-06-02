@@ -33,12 +33,21 @@ dependencies {
 	implementation 'org.htmlunit:htmlunit:5.0.0'
 	implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.1'
 
+	//---------------- Caffeine ----------------
 	implementation 'com.github.ben-manes.caffeine:caffeine:3.2.4'
 
-	//---------------- BEGIN Logging ----------------
+	//---------------- Redis ----------------
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'redis.clients:jedis:6.0.0'
+
+	//---------------- Logging ----------------
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	implementation 'com.lmax:disruptor:4.0.0'
 
+	//---------------- Jsoup ----------------
+	implementation("org.jsoup:jsoup:1.22.2")
+
+	//---------------- Testing ----------------
 	testImplementation 'org.springframework.boot:spring-boot-starter-mail-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'

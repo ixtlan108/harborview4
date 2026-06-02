@@ -1,0 +1,23 @@
+package:
+  name: harborview 
+  publish:
+    version: 0.9.0
+    license: BSD-3-Clause
+    #location:
+    #  githubOwner: purescript
+    #  githubRepo: spago
+  dependencies:
+    - aff
+    - affjax
+    - affjax-web
+    - argonaut-codecs
+    - argonaut-core
+    - arrays
+    - console
+    - effect
+    - foreign 
+    - halogen
+  test:
+    main: Test.Main
+    dependencies:
+      - spec

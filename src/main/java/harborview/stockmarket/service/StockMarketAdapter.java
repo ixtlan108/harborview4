@@ -20,16 +20,17 @@ import java.util.List;
 public class StockMarketAdapter implements StockMarketService {
 
     protected final SqlSession session;
-
+    private final RedisAdapter redisAdapter;
     private final Date fromDate;
 
     private final Logger logger = LogManager.getLogger(StockMarketAdapter.class);
 
     private List<Stock> stocks;
 
-    public StockMarketAdapter(SqlSession session,
+    public StockMarketAdapter(SqlSession session, RedisAdapter redisAdapter,
                               @Value("${adapter.stockmarket.from-date}") Date fromDate) {
         this.session = session;
+        this.redisAdapter = redisAdapter;
         this.fromDate = fromDate;
     }
 
@@ -44,6 +45,11 @@ public class StockMarketAdapter implements StockMarketService {
     public List<Stock> getStocks() {
         populateStocksIfEmtpy();
         return stocks;
+    }
+
+    @Override
+    public StockPrice getSpot(StockTicker ticker) {
+        return redisAdapter.getSpot(ticker);
     }
 
     @Override

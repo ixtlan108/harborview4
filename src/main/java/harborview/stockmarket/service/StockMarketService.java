@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface StockMarketService {
     List<Stock> getStocks();
+    StockPrice getSpot(StockTicker ticker);
     List<StockPrice> getStockPrices(StockTicker ticker, LocalDate fromDx);
     List<StockOptionPurchase> activePurchasesWithCritters(int purchaseType);
 }

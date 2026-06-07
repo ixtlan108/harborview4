@@ -23,10 +23,10 @@ public class StockMarketIntegrationTest {
 
     @Test
     void test_fetch_critters() {
-        var critters = core.getCritters(11);
-        Assertions.assertEquals(1,critters.size());
+        var purchases = core.getCritters(11);
+        Assertions.assertEquals(1,purchases.size());
 
-        var purchase = critters.getFirst();
+        var purchase = purchases.getFirst();
 
         Assertions.assertEquals("YAR7C800",purchase.getOptionName());
         Assertions.assertEquals("c", purchase.getOptionType());
@@ -41,6 +41,21 @@ public class StockMarketIntegrationTest {
         Assertions.assertEquals(516.0, purchase.getSpotAtPurchase(), 0.01);
         Assertions.assertEquals(300.0, purchase.getBuyAtPurchase(), 0.01);
         Assertions.assertEquals(10, purchase.getVolume());
+
+        var critters = purchase.getCritters();
+        Assertions.assertEquals(1, critters.size());
+
+        var critter = critters.getFirst();
+        Assertions.assertEquals(7, critter.getStatus());
+        Assertions.assertEquals(10, critter.getSellVolume());
+
+        var accRules = critter.getAcceptRules();
+        Assertions.assertEquals(1, accRules.size());
+
+        var acc = accRules.getFirst();
+        Assertions.assertEquals(16.0, acc.getAccValue(), 0.01);
+        Assertions.assertEquals(7, acc.getRtyp());
+        Assertions.assertEquals("y", acc.getActive());
 
     }
 }

@@ -4,5 +4,6 @@
 <configuration>
     <mappers>
         <mapper resource="mybatis/Critter.xml"/>
+        <mapper resource="mybatis/Stock.xml"/>
     </mappers>
 </configuration>

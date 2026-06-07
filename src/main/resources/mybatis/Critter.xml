@@ -21,6 +21,8 @@
     <resultMap id="purchaseResultMap" type="harborview.stockmarket.stockoption.StockOptionPurchase">
         <id column="oid" property="oid"/>
         <result column="dx" property="dx"/>
+        <result column="exp_date" property="expirySql"/>
+        <result column="purchase_type" property="purchaseType"/>
         <result column="price" property="price"/>
         <result column="buy" property="buyAtPurchase"/>
         <result column="spot" property="spotAtPurchase"/>
@@ -52,7 +54,7 @@
     </resultMap>
 
     <select id="activePurchasesWithCritters" resultMap="purchaseResultMap">
-        select o.*,s.ticker,d.opname,d.optype,
+        select o.*,s.ticker,d.opname,d.optype,d.exp_date,
         cr.oid as c_oid,cr.status as c_status,cr.sell_vol as c_sell_vol,cr.purchase_id as c_purchase_id,
         acc.oid as a_oid,acc.value as a_value,acc.rtyp as a_rtyp,acc.value as a_value,ar.description as a_rtyp_desc,acc.active as a_active
         from stockmarket.optionpurchase o

@@ -80,7 +80,8 @@
           { :src co/src-css
             :pkg pkg
             :stem stem
-            :scss-file (string/format "%s.scss" stem)
+            # :scss-file (string/format "%s.css" stem)
+            :scss-file "main.css" 
             :css-file (string/format "%s.css" stem)
             :css-file-2 (string/format "%s/%s/dist/%s.css" co/src-ps pkg stem)
             :css-map-file (string/slice (buffer/push-string @"" co/src-ps "/" pkg "/dist/" stem ".css.map"))

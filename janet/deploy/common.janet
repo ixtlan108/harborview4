@@ -1,7 +1,7 @@
 
 (def src-ps "../../purescript")
 
-(def src-css "../../sass-src")
+(def src-css "../../css")
 
 (def src-java "../../src/main/resources")
 

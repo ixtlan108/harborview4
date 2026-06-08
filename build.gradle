@@ -33,6 +33,9 @@ dependencies {
 	implementation 'org.htmlunit:htmlunit:5.0.0'
 	implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.1'
 
+	//---------------- VAVR ----------------
+	//implementation("io.vavr:vavr:1.0.1")
+
 	//---------------- Caffeine ----------------
 	implementation 'com.github.ben-manes.caffeine:caffeine:3.2.4'
 

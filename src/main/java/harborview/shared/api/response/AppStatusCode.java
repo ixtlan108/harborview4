@@ -3,7 +3,7 @@ package harborview.shared.api.response;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum AppStatusCode {
-    OK(1),
+    OK(0),
     GENERAL_ERROR(2),
     DUPLICATE_KEY_ERROR(3),
     GENERAL_SQL_ERROR(4),

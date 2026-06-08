@@ -4,7 +4,7 @@ import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import harborview.stockmarket.stock.StockPrice;
 import harborview.stockmarket.stock.StockTicker;
-import harborview.stockmarket.stockoption.StockOptionPurchase;
+import harborview.rapanui.core.domain.stockmarket.stockoption.StockOptionPurchase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,10 @@ public class StockMarketCore {
         }
         return cached;
     }
+    /*
     public List<StockOptionPurchase> getCritters(int purchaseType) {
         return service.activePurchasesWithCritters(purchaseType);
     }
+
+     */
 }

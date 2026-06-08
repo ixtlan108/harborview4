@@ -7,6 +7,7 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,8 +18,8 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+@Profile("prod")
 @Component
-@Primary
 public class DefaultDownloaderAdapter implements  Downloader<PageInfo> {
     private static final Logger logger = LogManager.getLogger(DefaultDownloaderAdapter.class);
 

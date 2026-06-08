@@ -1,8 +1,6 @@
 package harborview.stockmarket.stock;
 
 
-import harborview.stockmarket.stockoption.StockOption;
-
 import java.util.List;
 
 public class Stock {
@@ -10,7 +8,7 @@ public class Stock {
     private String ticker;
     private int status;
     private int oid;
-    private List<StockOption> stockOptions;
+    //private List<StockOption> stockOptions;
     private int tickerCategory;
 
     public String toHtml() {
@@ -67,12 +65,15 @@ public class Stock {
         this.status = status;
     }
 
+    /*
     public List<StockOption> getDerivatives() {
         return stockOptions;
     }
 
+
     public void setDerivatives(List<StockOption> stockOptions) {
         this.stockOptions = stockOptions;
     }
+     */
 
 }

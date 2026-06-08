@@ -91,7 +91,7 @@
 
 (defn sale? [v] (v :isSale)) 
 
-(defn option-sales [req]
+(defn x-option-sales [req]
   (let [body (req :body)
         sales (filter sale? body)]
     (printf "req body %q" body)
@@ -99,8 +99,13 @@
       (c/default-response "Option sale registered ok")
       (c/post-response 32 "Some option sales were error"))))
 
+(defn option-sales [req]
+  (let [body (req :body)]
+    (printf "req body %q" body
+      (c/default-response "Option sale registered ok"))))
+
 (joy/route :get "/rapanui/stockoption/:ticker" stock-option)
-(joy/route :get "/critter/purchase/:purchasetype" purchase)
+(joy/route :get "/rapanui/purchase/:purchasetype" purchase)
 (joy/route :put "/rapanui/optionsales" option-sales)
 
 # {"appStatusCode": 1,

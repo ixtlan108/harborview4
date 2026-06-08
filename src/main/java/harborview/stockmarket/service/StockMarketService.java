@@ -2,7 +2,6 @@ package harborview.stockmarket.service;
 
 
 import harborview.stockmarket.stock.Stock;
-import harborview.stockmarket.stockoption.StockOptionPurchase;
 import harborview.stockmarket.stock.StockPrice;
 import harborview.stockmarket.stock.StockTicker;
 
@@ -13,5 +12,5 @@ public interface StockMarketService {
     List<Stock> getStocks();
     StockPrice getSpot(StockTicker ticker);
     List<StockPrice> getStockPrices(StockTicker ticker, LocalDate fromDx);
-    List<StockOptionPurchase> activePurchasesWithCritters(int purchaseType);
+    //List<StockOptionPurchase> activePurchasesWithCritters(int purchaseType);
 }

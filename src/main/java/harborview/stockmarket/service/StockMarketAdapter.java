@@ -1,15 +1,16 @@
 package harborview.stockmarket.service;
 
-import harborview.stockmarket.mybatis.CritterMapper;
+import harborview.rapanui.adapter.spi.mybatis.mapper.CritterMapper;
 import harborview.stockmarket.mybatis.StockMapper;
 import harborview.stockmarket.stock.Stock;
 import harborview.stockmarket.stock.StockPrice;
 import harborview.stockmarket.stock.StockTicker;
-import harborview.stockmarket.stockoption.StockOptionPurchase;
+import harborview.rapanui.core.domain.stockmarket.stockoption.StockOptionPurchase;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -17,11 +18,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@Profile("prod")
 public class StockMarketAdapter implements StockMarketService {
 
     protected final SqlSession session;
-    private final RedisAdapter redisAdapter;
-    private final Date fromDate;
+    protected final RedisAdapter redisAdapter;
+    protected final Date fromDate;
 
     private final Logger logger = LogManager.getLogger(StockMarketAdapter.class);
 
@@ -63,10 +65,13 @@ public class StockMarketAdapter implements StockMarketService {
         }
     }
 
+    /*
     @Override
     public List<StockOptionPurchase> activePurchasesWithCritters(int purchaseType) {
         var mapper = session.getMapper(CritterMapper.class);
         return mapper.activePurchasesWithCritters(purchaseType);
     }
+
+     */
 
 }

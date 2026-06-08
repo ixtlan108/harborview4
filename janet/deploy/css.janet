@@ -47,7 +47,10 @@
 (defn run-css [cfg]
   (let [css-cfg (cfg :css)
         out-file (css-out-file css-cfg)]
+    (printf "css-cfg %q" css-cfg)
+    (printf "out-file %q" out-file)
     (when (dyn :x-css)
+      (printf "in-file %q" (css-in-file css-cfg))
       (let [in-file (css-in-file css-cfg)
             f (file/open in-file)
             f-out (file/open out-file :w)

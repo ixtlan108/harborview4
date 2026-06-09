@@ -60,8 +60,8 @@
             (run-import-file val css-cfg f-out)
             (file/write f-out val)))
         (file/close f)
-        (file/close f-out))
-      ((dyn :x-md5-cmd) out-file))))
+        (file/close f-out)))
+    ((dyn :x-md5-cmd) out-file)))
 
 
 # (run-css (template-app "rapanui" "RapanuiMain" "rapanui" true))

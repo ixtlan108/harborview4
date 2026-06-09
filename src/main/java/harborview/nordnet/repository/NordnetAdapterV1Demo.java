@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component("adapter.demo")
-@Profile("demo")
+@Profile("dev")
 public class NordnetAdapterV1Demo extends NordnetAdapterV1 {
 
     public NordnetAdapterV1Demo(Downloader<PageInfo> downloader) {

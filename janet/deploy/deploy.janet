@@ -163,8 +163,11 @@
   (let [css-md5 (css/run-css cfg)
         spago-md5 (run-spago cfg)]
     (printf "css md5: %s" css-md5)
+    (print "copy-spago-files:")
     (copy-spago-files cfg spago-md5)
+    (print "copy-css-files:")
     (copy-css-files cfg css-md5)
+    (print "render:")
     (render cfg spago-md5 css-md5)))
 
 (defn run-template-app [pkg main stem]
@@ -180,47 +183,27 @@
      (os/execute [(dyn :x-spago-cmd) "build" "--package" pkg]))
   (os/cd co/cud))
 
-(defn run-nvim-pre []
-  (print "run-nvim-pre"))
-
-(defn run-nvim-post []
-  (print "run-nvim-post"))
-
-(defn nvim-pre []
-  (when (dyn :x-nvim) 
-    (run-nvim-pre)))
-
-(defn nvim-post []
-  (when (dyn :x-nvim) 
-    (run-nvim-post)))
-
 (defn run-rapanui []
-  (nvim-pre)
-  (if (dyn :x-build) 
-    (build-app "rapanui")
-    (run-template-app "rapanui" "RapanuiMain" "rapanui"))
-  (nvim-post))
+  (run-template-app "rapanui" "RapanuiMain" "rapanui"))
+
+  #(if (dyn :x-build) 
+  #  (build-app "rapanui")
+  #  (run-template-app "rapanui" "RapanuiMain" "rapanui")))
 
 (defn run-maunaloa []
-  (nvim-pre)
   (if (dyn :x-build) 
     (build-app "maunaloa")
-    (run-template-app "maunaloa" "Main" "maunaloa"))
-  (nvim-post))
+    (run-template-app "maunaloa" "Main" "maunaloa")))
 
 (defn run-optionpurchase []
-  (nvim-pre)
   (if (dyn :x-build) 
     (build-app "optionpurchase")
-    (run-template-app "optionpurchase" "OptionPurchaseMain" "optionpurchase"))
-  (nvim-post))
+    (run-template-app "optionpurchase" "OptionPurchaseMain" "optionpurchase")))
 
 (defn run-derivatives []
-  (nvim-pre)
   (if (dyn :x-build) 
     (build-app "derivatives")
-    (run-template-app "derivatives" "DerivativesMain" "derivatives"))
-  (nvim-post))
+    (run-template-app "derivatives" "DerivativesMain" "derivatives")))
 
 (def elm-cmd "/usr/local/bin/elm")
 
@@ -275,9 +258,7 @@
            "3" run-optionpurchase 
            "4" run-derivatives
            "5" run-options 
-           "6" run-critters
-           "97" run-nvim-pre 
-           "98" run-nvim-post})
+           "6" run-critters})
 
 (defn proj-item [[index desc is-first]] 
   (if is-first

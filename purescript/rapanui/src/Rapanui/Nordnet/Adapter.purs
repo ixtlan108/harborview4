@@ -25,7 +25,7 @@ import Rapanui.StockMarket.OptionSaleItem (OptionSale(..))
 fetchCritters :: Aff (Either AppStatus CritterResponse)
 fetchCritters =
   HU.get
-    "/critter/purchase/11"
+    "/rapanui/purchase/11"
     CoreJson.critterResponseDecoder
 
 fetchStockOption :: OptionTicker -> Aff (Either AppStatus StockOptionPayload)

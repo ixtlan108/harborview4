@@ -10,7 +10,6 @@
     <div class="logo"></div>
     <div id="rapanui"></div>
     <div th:replace="~{head.html :: scripts}"></div>
-    <div th:replace="~{footer.html :: footer}"></div>
 
     <script type="text/javascript" src="/js/rapanui/rapanui-%s.js"></script>
     <link rel="stylesheet" href="/css/rapanui/rapanui-%s.css">

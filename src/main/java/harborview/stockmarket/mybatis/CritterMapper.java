@@ -19,5 +19,6 @@ public interface CritterMapper {
     List<RuleType> ruleTypes();
 
     List<StockOptionPurchase> activePurchasesWithCritters(@Param("purchaseType") int purchaseType);
+    List<StockOptionPurchase> activePurchasesWithCrittersDev(@Param("purchaseType") int purchaseType);
 
 }

@@ -9,14 +9,14 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@Component("demo")
-public class DemoDownloaderAdapter implements  Downloader<PageInfo> {
+@Component("dev")
+public class DownloaderAdapterDev implements  Downloader<PageInfo> {
 
     private final WebClient client;
 
     private List<PageInfo> result = null;
 
-    public DemoDownloaderAdapter() {
+    public DownloaderAdapterDev() {
         this.client = new WebClient();
         this.client.getOptions().setJavaScriptEnabled(false);
     }

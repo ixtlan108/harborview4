@@ -3,65 +3,51 @@ package harborview.nordnet.repository;
 //import com.github.benmanes.caffeine.cache.Cache;
 //import com.github.benmanes.caffeine.cache.Caffeine;
 //import harborview.adapter.RedisAdapter;
+
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import harborview.nordnet.downloader.Downloader;
 import harborview.nordnet.downloader.PageInfo;
 import harborview.nordnet.stockmarket.*;
-//import org.jsoup.Jsoup;
-//import org.jsoup.nodes.Element;
+import harborview.nordnet.util.ListUtil;
+import harborview.nordnet.util.StockOptionUtil;
 import harborview.shared.dto.Tuple2;
+import harborview.vega.OptionCalculator;
+import harborview.vega.StockOptionType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-//import vega.financial.StockOptionType;
-//import vega.financial.calculator.OptionCalculator;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 
 @Component
 @Primary
 public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepository {
 
-    private static final Logger log = LogManager.getLogger(NordnetAdapterV1.class);
-
-    public NordnetAdapterV1(Downloader<PageInfo> downloader) {
-        super(downloader);
-    }
-
-    @Override
-    public List<StockOption> getCalls(StockTicker ticker) {
-        return List.of();
-    }
-
-    @Override
-    public List<StockOption> getPuts(StockTicker ticker) {
-        return List.of();
-    }
-
-    @Override
-    public StockPrice getStockPrice(StockTicker ticker) {
-        return null;
-    }
-
-    @Override
-    public Tuple2<StockPrice, StockOption> findOption(StockOptionTicker ticker) {
-        return null;
-    }
-
-    @Override
-    public void resetCaffeine() {
-
-    }
-    /*
-    private final RedisAdapter redisAdapter;
-    private final OptionCalculator blackScholes;
+    private final OptionCalculator calculator;
     private final boolean fetchOpeningPrice;
     private final LocalDate curDate;
     private final Cache<Integer, Tuple2<StockPrice,List<StockOption>>> cacheStockOptions;
     private final Cache<String, Tuple2<StockPrice,List<StockOption>>> cacheStockOption;
 
-    private static final Logger log = LoggerFactory.getLogger(NordnetAdapterV1.class);
+
+    private static final Logger log = LogManager.getLogger(NordnetAdapterV1.class);
 
     private final Pattern pat = Pattern.compile("Norway\\s*(\\S*)");
 
@@ -77,15 +63,13 @@ public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepos
     private static final int PUT_TICKER = 13;
 
     public NordnetAdapterV1(Downloader<PageInfo> downloader,
-                            RedisAdapter redisAdapter,
-                            @Qualifier("blackScholes") OptionCalculator blackScholes,
+                            @Qualifier("blackScholes") OptionCalculator calculator,
                             @Value("${curdate:#{null}}") String curDateStr,
                             @Value("${cache.options.expiry}") int optionsExpiry,
                             @Value("${cache.option.expiry}") int optionExpiry,
                             @Value("${redis.fetchOpeningPrice}") boolean fetchOpeningPrice) {
         super(downloader);
-        this.redisAdapter = redisAdapter;
-        this.blackScholes = blackScholes;
+        this.calculator = calculator;
         this.fetchOpeningPrice = fetchOpeningPrice;
 
         curDate = getDateFor(curDateStr,null);
@@ -218,7 +202,7 @@ public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepos
         var rows = el.children();
         var stockPriceRow = rows.get(1);
         var rc = stockPriceRow.children();
-        var opn = fetchOpeningPrice ? redisAdapter.openingPrice(ticker) : 0;
+        var opn = fetchOpeningPrice ? 1.0 : 0; //redisAdapter.openingPrice(ticker) : 0;
         var hi = el2double(rc.get(SP_HI));
         var lo = el2double(rc.get(SP_LO));
         var cls = el2double(rc.get(SP_CLS));
@@ -246,7 +230,7 @@ public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepos
         var bid = el2double(ch.get(indexBid));
         var ask = el2double(ch.get(indexAsk));
         var isoAndDays = StockOptionUtil.iso8601andDays(ticker, curDate);
-        return  new StockOption(ticker, ot, x, bid, ask, isoAndDays.second(), isoAndDays.first(), stockPrice, blackScholes);
+        return  new StockOption(ticker, ot, x, bid, ask, isoAndDays.second(), isoAndDays.first(), stockPrice, calculator);
     }
 
     private record ParsePageClosure(StockPrice stockPrice,
@@ -307,5 +291,4 @@ public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepos
         writer.write(content);
         writer.close();
     }
-    //*/
 }

@@ -34,4 +34,5 @@ public class RapanuiAPI {
     public ResponseEntity<PayloadResponse<List<OptionPurchaseDTO>>> purchases(@PathVariable("ptype") int ptype) {
         return ApiUtil.map(core.activePurchasesWithCritters(ptype));
     }
+
 }

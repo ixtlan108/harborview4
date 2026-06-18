@@ -3,13 +3,15 @@ package harborview.nordnet.downloader;
 import harborview.nordnet.stockmarket.StockOptionInfo;
 import harborview.nordnet.stockmarket.StockTicker;
 import org.htmlunit.WebClient;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@Component("filesystem")
+@Profile("integration")
+@Component
 public class IntegrationDownloaderAdapter implements  Downloader<PageInfo> {
 
     private final WebClient client;

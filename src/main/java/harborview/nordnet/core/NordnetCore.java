@@ -18,9 +18,8 @@ public class NordnetCore {
     private final NordnetRepository repos;
     private final Core core;
 
-    public NordnetCore(@Qualifier("adapter.dev") NordnetRepository repos,
+    public NordnetCore(NordnetRepository repos,
                        Core core) {
-    //public NordnetCore(NordnetRepository repos) {
         this.repos = repos;
         this.core = core;
         System.out.println("NordnetCore: " + repos);

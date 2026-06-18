@@ -21,6 +21,7 @@ import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
@@ -36,8 +37,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 
+@Profile("prod")
 @Component
-@Primary
 public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepository {
 
     private final OptionCalculator calculator;

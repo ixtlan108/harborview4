@@ -17,11 +17,17 @@ import static org.springframework.modulith.test.ApplicationModuleTest.BootstrapM
 @ApplicationModuleTest(mode = ALL_DEPENDENCIES)
 public class NordnetAdapterV1FileSystemTest {
 
+    /* Option tickers with added N:
+        YAR, NHY, TEL, DNB, GJF, ORK, RECSI (REC Silicon) -> RECN, STB, SUBC,
+     */
 
-    @Autowired
-    NordnetAdapterV1FileSystem nordnetAdapter;
+    private final NordnetAdapterV1FileSystem nordnetAdapter;
 
     private final StockTicker stockTicker = new StockTicker("YAR");
+
+    public NordnetAdapterV1FileSystemTest(NordnetAdapterV1FileSystem nordnetAdapter) {
+        this.nordnetAdapter = nordnetAdapter;
+    }
 
     @Test
     void test_parse_filesystem() {

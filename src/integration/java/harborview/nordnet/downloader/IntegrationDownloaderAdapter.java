@@ -3,13 +3,15 @@ package harborview.nordnet.downloader;
 import harborview.nordnet.stockmarket.StockOptionInfo;
 import harborview.nordnet.stockmarket.StockTicker;
 import org.htmlunit.WebClient;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@Component("filesystem")
+@Profile("integration")
+@Component
 public class IntegrationDownloaderAdapter implements  Downloader<PageInfo> {
 
     private final WebClient client;
@@ -26,7 +28,8 @@ public class IntegrationDownloaderAdapter implements  Downloader<PageInfo> {
         if (result == null) {
 
             try {
-                String jsoupUrl = "file:///home/rcs/opt/java/harborview3/src/integration/resources/nordnet/jsoup-1797548400.html";
+                //String jsoupUrl = "file:///home/rcs/opt/java/harborview3/src/integration/resources/nordnet/jsoup-1797548400.html";
+                String jsoupUrl = "file:///home/rcs/opt/java/harborview4/src/integration/resources/nordnet/yar.html";
                 var page = client.getPage(jsoupUrl);
                 var content = page.getWebResponse().getContentAsString();
                 var info = new PageInfo(content);

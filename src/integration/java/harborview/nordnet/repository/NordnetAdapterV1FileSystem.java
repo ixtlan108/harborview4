@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component("adapter.filesystem")
+@Component
 public class NordnetAdapterV1FileSystem extends NordnetAdapterV1 {
 
 
-    public NordnetAdapterV1FileSystem(@Qualifier("filesystem") Downloader<PageInfo> downloader,
+    public NordnetAdapterV1FileSystem(Downloader<PageInfo> downloader,
                                       @Qualifier("blackScholes") OptionCalculator blackScholes,
                                       @Value("${curdate:#{null}}") String curDateStr,
                                       @Value("${cache.options.expiry.minutes}") int optionsExpiry,

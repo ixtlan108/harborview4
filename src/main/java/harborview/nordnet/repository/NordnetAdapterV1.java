@@ -65,8 +65,8 @@ public class NordnetAdapterV1 extends NordnetAdapterBase implements NordnetRepos
     public NordnetAdapterV1(Downloader<PageInfo> downloader,
                             @Qualifier("blackScholes") OptionCalculator calculator,
                             @Value("${curdate:#{null}}") String curDateStr,
-                            @Value("${cache.options.expiry}") int optionsExpiry,
-                            @Value("${cache.option.expiry}") int optionExpiry,
+                            @Value("${cache.options.expiry.minutes}") int optionsExpiry,
+                            @Value("${cache.option.expiry.seconds}") int optionExpiry,
                             @Value("${redis.fetchOpeningPrice}") boolean fetchOpeningPrice) {
         super(downloader);
         this.calculator = calculator;

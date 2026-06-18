@@ -26,7 +26,8 @@ public class IntegrationDownloaderAdapter implements  Downloader<PageInfo> {
         if (result == null) {
 
             try {
-                String jsoupUrl = "file:///home/rcs/opt/java/harborview3/src/integration/resources/nordnet/jsoup-1797548400.html";
+                //String jsoupUrl = "file:///home/rcs/opt/java/harborview3/src/integration/resources/nordnet/jsoup-1797548400.html";
+                String jsoupUrl = "file:///home/rcs/opt/java/harborview3/src/integration/resources/nordnet/yar.html";
                 var page = client.getPage(jsoupUrl);
                 var content = page.getWebResponse().getContentAsString();
                 var info = new PageInfo(content);

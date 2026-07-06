@@ -1,6 +1,6 @@
 package harborview.rapanui.service;
 
-import harborview.nordnet.NordnetFacade;
+import harborview.euronext.EuronextFacade;
 import harborview.shared.Core;
 import harborview.shared.error.ApplicationError;
 import harborview.shared.functional.Either;
@@ -19,13 +19,13 @@ public class RapanuiCore {
     private Logger logger = LogManager.getLogger(RapanuiCore.class);
 
     private final StockMarketService stockMarketAdapter;
-    private final NordnetFacade nordnetFacade;
+    private final EuronextFacade facade;
     private final Core core;
 
-    public RapanuiCore(StockMarketService stockMarketAdapter, NordnetFacade nordnetFacade,
+    public RapanuiCore(StockMarketService stockMarketAdapter, EuronextFacade facade,
                        Core core) {
         this.stockMarketAdapter = stockMarketAdapter;
-        this.nordnetFacade = nordnetFacade;
+        this.facade = facade;
         this.core = core;
     }
 

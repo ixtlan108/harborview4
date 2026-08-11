@@ -100,7 +100,7 @@
       (c/post-response 32 "Some option sales were error"))))
 
 (joy/route :get "/rapanui/stockoption/:ticker" stock-option)
-(joy/route :get "/critter/purchase/:purchasetype" purchase)
+(joy/route :get "/rapanui/purchase/:purchasetype" purchase)
 (joy/route :put "/rapanui/optionsales" option-sales)
 
 # {"appStatusCode": 1,

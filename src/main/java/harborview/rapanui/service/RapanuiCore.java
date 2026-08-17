@@ -1,6 +1,7 @@
 package harborview.rapanui.service;
 
-import harborview.euronext.EuronextFacade;
+import harborview.rapanui.TongaRepository;
+import harborview.rapanui.StockOptionResponse;
 import harborview.shared.Core;
 import harborview.shared.error.ApplicationError;
 import harborview.shared.functional.Either;
@@ -16,16 +17,17 @@ import java.util.stream.Collectors;
 
 @Component
 public class RapanuiCore {
-    private Logger logger = LogManager.getLogger(RapanuiCore.class);
+    private final Logger logger = LogManager.getLogger(RapanuiCore.class);
 
     private final StockMarketService stockMarketAdapter;
-    private final EuronextFacade facade;
+    private final TongaRepository tongaAdapter;
     private final Core core;
 
-    public RapanuiCore(StockMarketService stockMarketAdapter, EuronextFacade facade,
+    public RapanuiCore(StockMarketService stockMarketAdapter,
+                       TongaRepository tongaAdapter,
                        Core core) {
         this.stockMarketAdapter = stockMarketAdapter;
-        this.facade = facade;
+        this.tongaAdapter = tongaAdapter;
         this.core = core;
     }
 
@@ -43,5 +45,16 @@ public class RapanuiCore {
 
     public void toggleRule(int ruleId, boolean active, boolean isAccRule) {
         //==>>> stockMarketAdapter.toggleRule(ruleId, active, isAccRule);
+    }
+    public Either<ApplicationError, StockOptionResponse> stockOption(String ticker) {
+        return core.handleSearch(() -> {
+            var dto = tongaAdapter.stockOption(ticker);
+            if (dto == null) {
+                var msg = String.format("Empty stock option, ticker=%s", ticker);
+                logger.warn(msg);
+                return null;
+            }
+            return dto; //new StockOptionResponse(0.0, dto, 0, null);
+        });
     }
 }

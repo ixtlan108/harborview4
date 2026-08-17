@@ -69,7 +69,7 @@ registerSales items =
     jb =
       map mapOptionSale items
     pl =
-      CJ.reqBodyArrayX2 jb
+      CJ.reqBodyArrayX3 "options" jb
     url =
       "/rapanui/optionsales"
   in

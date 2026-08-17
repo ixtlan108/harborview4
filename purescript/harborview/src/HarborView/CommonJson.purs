@@ -37,8 +37,16 @@ reqBodyArrayX2 :: Array (Array (Tuple String Json)) -> RequestBody
 reqBodyArrayX2 jb =
   REQB.json $ AC.fromArray $ fromArrayX2 jb
 
+fromArrayX3 :: String -> Array (Array (Tuple String Json)) -> Tuple String Json
+fromArrayX3 jsonKey jb =
+  Tuple jsonKey $ AC.fromArray (map (AC.fromObject <<< fromFoldable) jb)
+
+reqBodyArrayX3 :: String -> Array (Array (Tuple String Json)) -> RequestBody
+reqBodyArrayX3 jsonKey jb =
+  REQB.json $ AC.fromObject $ fromFoldable $ [fromArrayX3 jsonKey jb]
+
 type DefaultResponse =
-  { appStatusCode :: Int
+  { status :: Int
   , msg :: Maybe String
   }
 

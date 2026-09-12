@@ -1,4 +1,6 @@
 package harborview.rapanui;
 
-public record OptionSalesRequest(List<OptionSaleReq> ) {
+import java.util.List;
+
+public record OptionSalesRequest(List<OptionSaleReq> options) {
 }

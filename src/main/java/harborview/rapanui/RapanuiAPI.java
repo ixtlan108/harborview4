@@ -1,9 +1,11 @@
 package harborview.rapanui;
 
+import harborview.rapanui.kernel.dto.OptionPurchaseDTO;
 import harborview.rapanui.service.RapanuiCore;
 import harborview.shared.api.response.DefaultResponse;
 import harborview.shared.api.response.PayloadResponse;
 import harborview.shared.api.util.ApiUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,9 @@ public class RapanuiAPI {
 
     @PutMapping(value = "/optionsales", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DefaultResponse> optionSales(@RequestBody OptionSalesRequest req) {
-        return null;
+        var result = new DefaultResponse(0, "Sold");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(result);
     }
 }

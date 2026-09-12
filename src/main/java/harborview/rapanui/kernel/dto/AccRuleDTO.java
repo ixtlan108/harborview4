@@ -1,4 +1,4 @@
-package harborview.rapanui;
+package harborview.rapanui.kernel.dto;
 
 import harborview.stockmarket.critter.AcceptRule;
 

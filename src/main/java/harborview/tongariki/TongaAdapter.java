@@ -1,6 +1,6 @@
 package harborview.tongariki;
 
-import harborview.rapanui.StockOptionDTO;
+import harborview.rapanui.kernel.dto.StockOptionDTO;
 import harborview.rapanui.StockOptionResponse;
 import harborview.rapanui.TongaRepository;
 import org.springframework.stereotype.Component;

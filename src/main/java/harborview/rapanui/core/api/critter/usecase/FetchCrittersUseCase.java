@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public interface FetchCrittersUseCase {
     Either<Error, List<OptionPurchaseDTO>> handle(FetchCrittersQuery command);
 }

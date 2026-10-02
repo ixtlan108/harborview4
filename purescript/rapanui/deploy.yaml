@@ -1,0 +1,19 @@
+---
+# Config
+pkg: rapanui
+ps-home: /home/rcs/opt/java/harborview4/purescript
+stem: rapanui
+java-resources: /home/rcs/opt/java/harborview4/src/main/resources
+janet-resources: /home/rcs/opt/java/harborview4/janet/harborview/public
+---
+# Spago
+module: RapanuiMain
+---
+# Css
+css-home: /home/rcs/opt/java/harborview4/css
+css-main: main.css
+---
+# Thymeleaf
+tpl-path: /home/rcs/opt/java/harborview4/purescript/rapanui/tpl
+tpl: index.html.tpl
+tpl-target: /home/rcs/opt/java/harborview4/src/main/resources/templates/rapanui

@@ -11,8 +11,8 @@
     <div id="rapanui"></div>
     <div th:replace="~{head.html :: scripts}"></div>
 
-    <script type="text/javascript" src="/js/rapanui/rapanui-%s.js"></script>
-    <link rel="stylesheet" href="/css/rapanui/rapanui-%s.css">
+    <script type="text/javascript" src="/js/rapanui/rapanui-{{ md5_js }}.js"></script>
+    <link rel="stylesheet" href="/css/rapanui/rapanui-{{ md5_css }}.css">
 
 </body>
 

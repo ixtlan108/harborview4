@@ -21,8 +21,8 @@ public class FetchCritterHandler implements FetchCrittersUseCase {
     }
 
     @Override
-    public Either<Error, List<OptionPurchaseDTO>> handle(FetchCrittersQuery command) {
-        var purchaseType = new PurchaseType(command.value());
+    public Either<Error, List<OptionPurchaseDTO>> handle(FetchCrittersQuery query) {
+        var purchaseType = new PurchaseType(query.value());
         var result = repository.readAllCrittersByPurchaseType(purchaseType);
         if (result.isLeft()) {
             return Either.left(result.getLeft());

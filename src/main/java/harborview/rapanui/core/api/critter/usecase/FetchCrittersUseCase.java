@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 public interface FetchCrittersUseCase {
-    Either<Error, List<OptionPurchaseDTO>> handle(FetchCrittersQuery command);
+    Either<Error, List<OptionPurchaseDTO>> handle(FetchCrittersQuery query);
 }

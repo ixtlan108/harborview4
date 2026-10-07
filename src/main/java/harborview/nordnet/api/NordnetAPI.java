@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/nordnet")
+//@Controller
+//@RequestMapping("/nordnet")
 public class NordnetAPI {
+    /*
     private final NordnetCore core;
 
     public NordnetAPI(NordnetCore core) {
@@ -60,5 +61,7 @@ public class NordnetAPI {
     private List<StockOptionDTO> map(List<StockOption> options) {
         return options.stream().map(StockOptionDTO::new).toList();
     }
+
+     */
 
 }

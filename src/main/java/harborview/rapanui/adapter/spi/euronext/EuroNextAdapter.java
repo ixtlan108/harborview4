@@ -82,13 +82,11 @@ public class EuroNextAdapter implements EuroNextPort  {
     }
 
     private OptionDTO mapJsonNode(String ticker, JsonNode node) {
-        var strike = node.get("strike").asFloat();
-        var c_bid = node.get("c_bid").asFloat();
-        var c_ask = node.get("c_ask").asFloat();
-        var p_bid = node.get("p_bid").asFloat();
-        var p_ask = node.get("p_ask").asFloat();
-        var maturityDate = node.get("maturityDate").asFloat();
-        return new OptionDTO();
+        return OptionDTO.create(node);
+    }
+
+    private String asStockOptionTicker(String maturityDate, String ticker) {
+        return "yar";
     }
 }
 

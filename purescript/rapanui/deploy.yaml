@@ -1,14 +1,14 @@
 ---
 # Config
 base: /home/rcs/opt/java/harborview4
-pkg: rapanui
-ps-home: purescript
-stem: rapanui
 java-resources: src/main/resources
 janet-resources: janet/harborview/public
 ---
 # Spago
 module: RapanuiMain
+pkg: rapanui
+ps-home: purescript
+stem: rapanui
 ---
 # Css
 css-home: css

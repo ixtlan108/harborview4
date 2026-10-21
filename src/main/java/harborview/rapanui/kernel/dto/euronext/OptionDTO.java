@@ -4,7 +4,6 @@ import harborview.shared.dto.Month;
 import harborview.shared.util.StockOptionUtil;
 import tools.jackson.databind.JsonNode;
 
-import javax.swing.text.html.Option;
 
 public class OptionDTO {
 
@@ -21,7 +20,7 @@ public class OptionDTO {
         var maturityDate = node.get("maturityDate").asString();
         var splitDate = maturityDate.split(" ");
         var month = Month.fromString(splitDate[0]);
-        var year = Integer.valueOf(splitDate[1]);
+        var year = Integer.parseInt(splitDate[1]);
         var exerciseDate = StockOptionUtil.thirdFriday(year,month.getIndex());
         //"maturityDate": "Oct 2026",
         return null;

@@ -7,5 +7,5 @@ import harborview.shared.functional.Either;
 import java.util.List;
 
 public interface EuroNextPort {
-    Either<Error, List<OptionDTO>> fetchOptions(String ticker);
+    Either<Error, List<OptionDTO>> findAllOptions(String ticker);
 }

@@ -38,8 +38,8 @@ public class RapanulAPI {
 
     @GetMapping(value = "/purchase/{ptype}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PayloadResponse<List<OptionPurchaseDTO>>> purchases(@PathVariable int ptype) {
-        var cmd = new FetchCrittersQuery(ptype);
-        var result = useCase.handle(cmd);
+        var query = new FetchCrittersQuery(ptype);
+        var result = useCase.handle(query);
         return ApiUtil.mapQuery(result);
     }
     @GetMapping(value = "/options/{ticker}", produces = MediaType.APPLICATION_JSON_VALUE)

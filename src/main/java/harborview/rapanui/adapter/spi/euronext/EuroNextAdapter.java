@@ -30,7 +30,7 @@ public class EuroNextAdapter implements EuroNextPort  {
     }
 
     @Override
-    public Either<Error, List<OptionDTO>> fetchOptions(String ticker) {
+    public Either<Error, List<OptionDTO>> findAllOptions(String ticker) {
 
         try {
             var result = new ArrayList<OptionDTO>();

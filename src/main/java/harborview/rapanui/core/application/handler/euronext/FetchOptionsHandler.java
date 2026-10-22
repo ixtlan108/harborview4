@@ -16,6 +16,6 @@ public class FetchOptionsHandler {
         this.euroNextPort = euroNextPort;
     }
     public Either<Error,List<OptionDTO>> fetchOptions(String ticker) {
-        return euroNextPort.fetchOptions(ticker);
+        return euroNextPort.findAllOptions(ticker);
     }
 }

@@ -1,5 +1,6 @@
 package harborview.rapanui.adapter.spi.euronext;
 
+import harborview.rapanui.core.domain.stockmarket.stock.Ticker;
 import harborview.rapanui.core.spi.euronext.EuroNextPort;
 import harborview.rapanui.kernel.dto.euronext.OptionDTO;
 import harborview.rapanui.kernel.error.Error;
@@ -30,7 +31,7 @@ public class EuroNextAdapter implements EuroNextPort  {
     }
 
     @Override
-    public Either<Error, List<OptionDTO>> findAllOptions(String ticker) {
+    public Either<Error, List<OptionDTO>> findAllOptions(Ticker ticker) {
 
         try {
             var result = new ArrayList<OptionDTO>();
@@ -69,8 +70,8 @@ public class EuroNextAdapter implements EuroNextPort  {
         }
     }
 
-    private String urlFor(String ticker) {
-        return String.format("http://localhost:3000/proxy/%s", ticker);
+    private String urlFor(Ticker ticker) {
+        return String.format("http://localhost:3000/proxy/%s", ticker.getTicker());
     }
 
     private HttpClient getClient() {
@@ -80,7 +81,7 @@ public class EuroNextAdapter implements EuroNextPort  {
         return client;
     }
 
-    private OptionDTO mapJsonNode(String ticker, JsonNode node) {
+    private OptionDTO mapJsonNode(Ticker ticker, JsonNode node) {
         return OptionDTO.create(node);
     }
 

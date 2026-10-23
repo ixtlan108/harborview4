@@ -7,11 +7,13 @@ import harborview.rapanui.core.domain.repository.CritterRepository;
 import harborview.rapanui.core.domain.value.stockmarket.PurchaseType;
 import harborview.rapanui.kernel.dto.OptionPurchaseDTO;
 import harborview.rapanui.kernel.error.Error;
+import harborview.shared.annotation.InputPort;
 import harborview.shared.functional.Either;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@InputPort
 @Component
 public class FetchCritterHandler implements FetchCrittersUseCase {
     private final CritterRepository repository;

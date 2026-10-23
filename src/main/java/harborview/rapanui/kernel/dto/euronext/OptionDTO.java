@@ -1,7 +1,7 @@
 package harborview.rapanui.kernel.dto.euronext;
 
 import harborview.shared.dto.Month;
-import harborview.shared.util.StockOptionUtil;
+import harborview.shared.util.StockMarketUtil;
 import tools.jackson.databind.JsonNode;
 
 
@@ -21,7 +21,7 @@ public class OptionDTO {
         var splitDate = maturityDate.split(" ");
         var month = Month.fromString(splitDate[0]);
         var year = Integer.parseInt(splitDate[1]);
-        var exerciseDate = StockOptionUtil.thirdFriday(year,month.getIndex());
+        var exerciseDate = StockMarketUtil.thirdFriday(year,month.getIndex());
         //"maturityDate": "Oct 2026",
         return null;
     }

@@ -1,7 +1,7 @@
 package harborview.rapanui.core.domain.stockmarket.stock;
 
 import harborview.shared.functional.Either;
-import harborview.shared.util.StockMarketUtil;
+import harborview.shared.util.stockmarket.StockMarketUtil;
 import harborview.rapanui.kernel.error.Error;
 
 public class Ticker {
@@ -14,12 +14,13 @@ public class Ticker {
     }
 
     public static Either<Error,Ticker> create(String ticker) {
-        var oid = StockMarketUtil.mapString(ticker);
+        var tickerU = ticker.toUpperCase();
+        var oid = StockMarketUtil.mapString(tickerU);
         if (oid == null)  {
-            return Either.left(businessErrorFor(ticker));
+            return Either.left(businessErrorFor(tickerU));
         }
         else {
-            return Either.right(new Ticker(ticker, oid));
+            return Either.right(new Ticker(tickerU, oid));
         }
     }
 

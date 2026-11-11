@@ -1,4 +1,4 @@
-package harborview.shared.util;
+package harborview.shared.util.stockmarket;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,6 +6,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Map;
 
 public class StockMarketUtil {
+
     public static LocalDate thirdFriday(int year, int month) {
         return LocalDate.of(year, month, 1).
                 with(TemporalAdjusters.dayOfWeekInMonth(3, DayOfWeek.FRIDAY));

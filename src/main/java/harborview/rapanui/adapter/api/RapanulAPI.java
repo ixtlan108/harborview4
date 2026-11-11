@@ -5,7 +5,7 @@ import harborview.rapanui.core.api.critter.usecase.FetchCrittersUseCase;
 import harborview.rapanui.core.application.handler.euronext.FetchOptionsHandler;
 import harborview.rapanui.kernel.dto.OptionPurchaseDTO;
 import harborview.rapanui.core.application.common.ApiUtil;
-import harborview.rapanui.kernel.dto.euronext.OptionDTO;
+import harborview.rapanui.kernel.dto.euronext.OptionPriceDTO;
 import harborview.shared.api.response.PayloadResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,10 +42,16 @@ public class RapanulAPI {
         var result = useCase.handle(query);
         return ApiUtil.mapQuery(result);
     }
+
     @GetMapping(value = "/options/{ticker}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PayloadResponse<List<OptionDTO>>> options(@PathVariable String ticker) {
+    public ResponseEntity<PayloadResponse<List<OptionPriceDTO>>> options(@PathVariable String ticker) {
         var result = fetchOptionsHandler.fetchOptions(ticker);
         return ApiUtil.mapQuery(result);
+    }
+
+    @GetMapping(value = "/stockoption/price/{ticker}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PayloadResponse<List<OptionPriceDTO>>> stockOptionPrice(@PathVariable String ticker) {
+        return null;
     }
 }
 

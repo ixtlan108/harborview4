@@ -29,8 +29,7 @@ public class CritterReposAdapterDev extends CritterReposAdapter {
 
     @Override
     public Either<Error, List<OptionPurchaseDTO>> findAllCrittersByPurchaseType(PurchaseType purchaseType) {
-        var mapper = session.getMapper(CritterMapper.class);
-        var result = Handler.handleQuery(() -> mapper.activePurchasesWithCrittersDev(purchaseType.value()));
+        var result = this.readAllCrittersByPurchaseType(purchaseType);
 
         return null;
     }

@@ -1,20 +1,29 @@
 package harborview.rapanui.core.domain.stockmarket.stockoption;
 
 
+import harborview.shared.functional.Either;
 import harborview.stockmarket.stock.Stock;
-import harborview.stockmarket.stockoption.StockOptionUtil;
-import harborview.vega.StockOptionType;
-
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import harborview.rapanui.kernel.error.Error;
 import static java.time.temporal.ChronoUnit.DAYS;
 
-//public class StockOption implements harborview.vega.StockOption {
 public class StockOption {
 
+    private final Stock stock;
+    private final StockOptionTicker ticker;
+    private StockOptionPrice price;
+    private final Calculator calculator;
+
+    private StockOption(Stock stock, StockOptionTicker ticker, Calculator calculator) {
+        this.stock = stock;
+        this.ticker = ticker;
+        this.calculator = calculator;
+    }
+
+    public static Either<Error,StockOption> create(Stock stock, StockOptionTicker ticker, Calculator calculator) {
+        return Either.left(new Error.BusinessError("Not implemented"));
+    }
+
+    /*
     //private StockOptionUtil stockOptionUtil;
     private LocalDate currentDate;
     private final Pattern p = Pattern.compile("\\D+(\\d\\D)\\d+");
@@ -45,20 +54,6 @@ public class StockOption {
         this.currentDate = currentDate;
     }
 
-    /*
-    @Override
-    public String toString() {
-        StringBuilder buf = new StringBuilder(getTicker());
-           buf.append("\n\texpiry: ").append(getExpiry())
-           .append("\n\toption type: ").append(getOpType() == OptionType.CALL ? "apply" : "put")
-           .append("\n\tx: ").append(getX())
-           //.append("\n\tbuy ").append(getBuy())
-           //.append("\n\tsell ").append(getSell())
-           .append("\n\tseries ").append(getSeries());
-           //.append("\n\twatermark ").append(getWatermark());
-        return buf.toString();
-    }
-    //*/
 
     //--------------------------------------------------
     //------------- Parent
@@ -204,27 +199,6 @@ public class StockOption {
         ticker = value;
     }
 
-    /*
-    public void setStockOptionUtil(StockOptionUtil stockOptionUtil) {
-        this.stockOptionUtil = stockOptionUtil;
-    }
-
-    public StockOptionUtil getStockOptionUtil() {
-        return stockOptionUtil;
-    }
      */
 
-    public LocalDate getCurrentDate() {
-        /*
-        if (currentDate == null) {
-            //currentDate = getExpiry().minusDays(60);
-            currentDate = stockOptionUtil.getCurrentDate();
-        }
-         */
-        return currentDate;
-    }
-
-    public void setCurrentDate(LocalDate currentDate) {
-        this.currentDate = currentDate;
-    }
 }

@@ -31,6 +31,7 @@ public class FetchOptionsHandler {
 
     public Either<Error, OptionPriceDTO> fetchOption(String ticker) {
 
+        /*
         var optionTicker = StockOptionTicker.create(ticker);
 
         if (optionTicker.isLeft()) {
@@ -38,6 +39,9 @@ public class FetchOptionsHandler {
         }
 
         return euroNextPort.findOption(optionTicker.getRight());
+
+         */
+        return null;
     }
 
 }

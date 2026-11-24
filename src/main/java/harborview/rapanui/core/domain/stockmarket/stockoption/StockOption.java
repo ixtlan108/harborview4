@@ -1,6 +1,8 @@
 package harborview.rapanui.core.domain.stockmarket.stockoption;
 
 
+import harborview.shared.dto.Month;
+import harborview.shared.dto.OptionType;
 import harborview.shared.functional.Either;
 import harborview.stockmarket.stock.Stock;
 import harborview.rapanui.kernel.error.Error;
@@ -12,15 +14,38 @@ public class StockOption {
     private final StockOptionTicker ticker;
     private StockOptionPrice price;
     private final Calculator calculator;
+    private LifeCycle lifeCycle;
 
-    private StockOption(Stock stock, StockOptionTicker ticker, Calculator calculator) {
+    public enum LifeCycle { FROM_HTML, SAVED_TO_DATABASE, FROM_DATABASE }
+
+    private StockOption(Stock stock,
+                        StockOptionTicker ticker,
+                        Calculator calculator) {
         this.stock = stock;
         this.ticker = ticker;
         this.calculator = calculator;
     }
 
-    public static Either<Error,StockOption> create(Stock stock, StockOptionTicker ticker, Calculator calculator) {
+    public static Either<Error, StockOption> create(Stock stock,
+                                                    OptionType ot,
+                                                    int year,
+                                                    Month month,
+                                                    Calculator calculator,
+                                                    LifeCycle lifeCycle) {
+
+        var ticker = StockOptionTicker.create(ot, year, month);
+
         return Either.left(new Error.BusinessError("Not implemented"));
+    }
+
+    //--------------------------------------------------
+    //--------------- Life Cycle -----------------------
+    //--------------------------------------------------
+    public LifeCycle getLifeCycle() {
+        return lifeCycle;
+    }
+    public void setLifeCycle(LifeCycle lifeCycle) {
+        this.lifeCycle = lifeCycle;
     }
 
     /*

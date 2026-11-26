@@ -6,24 +6,34 @@ import harborview.shared.dto.OptionType;
 import harborview.shared.functional.Either;
 import harborview.stockmarket.stock.Stock;
 import harborview.rapanui.kernel.error.Error;
-import static java.time.temporal.ChronoUnit.DAYS;
 
 public class StockOption {
 
+    private Integer oid;
     private final Stock stock;
     private final StockOptionTicker ticker;
     private StockOptionPrice price;
     private final Calculator calculator;
     private LifeCycle lifeCycle;
 
-    public enum LifeCycle { FROM_HTML, SAVED_TO_DATABASE, FROM_DATABASE }
+    public Integer getOid() {
+        return oid;
+    }
+
+    public void setOid(Integer oid) {
+        this.oid = oid;
+    }
+
+    public enum LifeCycle {FROM_JSON, SAVED_TO_DATABASE, FROM_DATABASE }
 
     private StockOption(Stock stock,
                         StockOptionTicker ticker,
-                        Calculator calculator) {
+                        Calculator calculator,
+                        LifeCycle lifeCycle) {
         this.stock = stock;
         this.ticker = ticker;
         this.calculator = calculator;
+        this.lifeCycle = lifeCycle;
     }
 
     public static Either<Error, StockOption> create(Stock stock,
@@ -35,7 +45,12 @@ public class StockOption {
 
         var ticker = StockOptionTicker.create(ot, year, month);
 
-        return Either.left(new Error.BusinessError("Not implemented"));
+        if (ticker.isRight()) {
+            return Either.left(ticker.getLeft());
+        }
+        return Either.right(new StockOption(stock, ticker.getRight(), calculator, LifeCycle.FROM_JSON));
+
+        //return Either.left(new Error.BusinessError("Not implemented"));
     }
 
     //--------------------------------------------------

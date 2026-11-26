@@ -14,7 +14,9 @@ public class StockOptionTicker {
     private final OptionType optionType;
     private final String stockMarketTicker;
 
-    private StockOptionTicker(LocalDate thirdFriday, OptionType optionType, String stockMarketTicker) {
+    private StockOptionTicker(LocalDate thirdFriday,
+                              OptionType optionType,
+                              String stockMarketTicker) {
         this.thirdFriday = thirdFriday;
         this.optionType = optionType;
         this.stockMarketTicker = stockMarketTicker;

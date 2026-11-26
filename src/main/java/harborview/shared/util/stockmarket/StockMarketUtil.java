@@ -1,5 +1,7 @@
 package harborview.shared.util.stockmarket;
 
+import harborview.shared.dto.OptionType;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
@@ -15,6 +17,54 @@ public class StockMarketUtil {
     public static LocalDate thirdFriday(String euronextMonthYear) {
         return null;
     }
+
+    public static String stockMarketTickerFor(int oid, int year, int month, OptionType ot) {
+        var company = mapOid(oid);
+        var ms = mapMonth(month, ot);
+        return "";
+    }
+    private static String mapYear(int year) {
+        switch (year) {
+            case 2026: return ""
+        }
+    }
+
+    private static String mapMonth(int month, OptionType ot) {
+        if (ot == OptionType.CALL) {
+            switch (month) {
+                case 1: return "A";
+                case 2: return "B";
+                case 3: return "C";
+                case 4: return "D";
+                case 5: return "E";
+                case 6: return "F";
+                case 7: return "G";
+                case 8: return "H";
+                case 9: return "I";
+                case 10: return "J";
+                case 11: return "K";
+                case 12: return "L";
+            }
+        }
+        else {
+            switch (month) {
+                case 1: return "M";
+                case 2: return "N";
+                case 3: return "O";
+                case 4: return "P";
+                case 5: return "Q";
+                case 6: return "R";
+                case 7: return "S";
+                case 8: return "T";
+                case 9: return "U";
+                case 10: return "V";
+                case 11: return "W";
+                case 12: return "X";
+            }
+        }
+        throw new RuntimeException("Month should be between 1 and 12");
+    }
+
 
     private static final Map<Integer,String> oid2str = Map.ofEntries(
             Map.entry(18,"AKSO"),

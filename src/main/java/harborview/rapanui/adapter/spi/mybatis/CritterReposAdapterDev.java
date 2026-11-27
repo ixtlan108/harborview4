@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Profile("dev")
@@ -29,8 +30,20 @@ public class CritterReposAdapterDev extends CritterReposAdapter {
 
     @Override
     public Either<Error, List<OptionPurchaseDTO>> findAllCrittersByPurchaseType(PurchaseType purchaseType) {
-        var result = this.readAllCrittersByPurchaseType(purchaseType);
+        var mapper = session.getMapper(CritterMapper.class);
 
-        return null;
+        var purchases = Handler.handleQuery(() -> mapper.activePurchasesWithCrittersDev(purchaseType.value()));
+
+        if (purchases.isLeft()) {
+            return Either.left(purchases.getLeft());
+        }
+
+        var result = new ArrayList<OptionPurchaseDTO>();
+
+        for (var p : purchases.getRight()) {
+            result.add(new OptionPurchaseDTO(p));
+        }
+
+        return Either.right(result);
     }
 }

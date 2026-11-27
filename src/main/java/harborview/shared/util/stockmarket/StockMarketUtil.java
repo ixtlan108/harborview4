@@ -1,13 +1,20 @@
 package harborview.shared.util.stockmarket;
 
 import harborview.shared.dto.OptionType;
+import harborview.shared.dto.Tuple2;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Map;
+import java.util.regex.Pattern;
+
+import static harborview.shared.dto.OptionType.CALL;
+import static harborview.shared.dto.OptionType.PUT;
 
 public class StockMarketUtil {
+
+    static Pattern pat = Pattern.compile("(\\D+)(\\d)(\\D)\\.*", Pattern.CASE_INSENSITIVE);
 
     public static LocalDate thirdFriday(int year, int month) {
         return LocalDate.of(year, month, 1).
@@ -23,14 +30,51 @@ public class StockMarketUtil {
         var ms = mapMonth(month, ot);
         return "";
     }
+
+    public static final Map<String, Tuple2<OptionType, Integer>> str2optInfo =
+           Map.ofEntries(
+                    Map.entry("A", new Tuple2<>(CALL,1)),
+                    Map.entry("B", new Tuple2<>(CALL,2)),
+                    Map.entry("C", new Tuple2<>(CALL,3)),
+                    Map.entry("D", new Tuple2<>(CALL,4)),
+                    Map.entry("E", new Tuple2<>(CALL,5)),
+                    Map.entry("F", new Tuple2<>(CALL,6)),
+                    Map.entry("G", new Tuple2<>(CALL,7)),
+                    Map.entry("H", new Tuple2<>(CALL,8)),
+                    Map.entry("I", new Tuple2<>(CALL,9)),
+                    Map.entry("J", new Tuple2<>(CALL,10)),
+                    Map.entry("K", new Tuple2<>(CALL,11)),
+                    Map.entry("L", new Tuple2<>(CALL,12)),
+                    Map.entry("M", new Tuple2<>(PUT,1)),
+                    Map.entry("N", new Tuple2<>(PUT,2)),
+                    Map.entry("O", new Tuple2<>(PUT,3)),
+                    Map.entry("P", new Tuple2<>(PUT,4)),
+                    Map.entry("Q", new Tuple2<>(PUT,5)),
+                    Map.entry("R", new Tuple2<>(PUT,6)),
+                    Map.entry("S", new Tuple2<>(PUT,7)),
+                    Map.entry("T", new Tuple2<>(PUT,8)),
+                    Map.entry("U", new Tuple2<>(PUT,9)),
+                    Map.entry("V", new Tuple2<>(PUT,10)),
+                    Map.entry("W", new Tuple2<>(PUT,11)),
+                    Map.entry("X", new Tuple2<>(PUT,12))
+            );
+
     private static String mapYear(int year) {
         switch (year) {
-            case 2026: return ""
+            case 2026: return "6";
+            case 2027: return "7";
+            case 2028: return "8";
+            case 2029: return "9";
+            case 2030: return "0";
+            case 2031: return "1";
+            case 2032: return "2";
+            case 2033: return "3";
         }
+        throw new RuntimeException("Year should be between 2026 and 2033");
     }
 
     private static String mapMonth(int month, OptionType ot) {
-        if (ot == OptionType.CALL) {
+        if (ot == CALL) {
             switch (month) {
                 case 1: return "A";
                 case 2: return "B";

@@ -43,11 +43,14 @@ public class RapanulAPI {
         return ApiUtil.mapQuery(result);
     }
 
+    /*
     @GetMapping(value = "/options/{ticker}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PayloadResponse<List<OptionPriceDTO>>> options(@PathVariable String ticker) {
         var result = fetchOptionsHandler.fetchOptions(ticker);
         return ApiUtil.mapQuery(result);
     }
+
+     */
 
     @GetMapping(value = "/stockoption/price/{ticker}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PayloadResponse<List<OptionPriceDTO>>> stockOptionPrice(@PathVariable String ticker) {

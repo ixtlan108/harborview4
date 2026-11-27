@@ -4,6 +4,7 @@ import harborview.rapanui.core.domain.stockmarket.stock.Ticker;
 import harborview.rapanui.core.domain.stockmarket.stockoption.StockOptionTicker;
 import harborview.rapanui.core.spi.euronext.EuroNextPort;
 import harborview.rapanui.kernel.dto.euronext.OptionPriceDTO;
+import harborview.rapanui.kernel.dto.euronext.OptionPricesDTO;
 import harborview.rapanui.kernel.error.Error;
 import harborview.shared.dto.OptionType;
 import harborview.shared.functional.Either;
@@ -30,64 +31,70 @@ public class EuroNextAdapter implements EuroNextPort  {
 
     private HttpClient client;
 
-    private final Map<Integer, List<OptionPriceDTO>> cache = new HashMap<>();
+    //private final Map<Integer, OptionPricesDTO> cache = new HashMap<>();
 
     public EuroNextAdapter(@Value("${euronext.port}") int euroNextPort) {
         this.euroNextPort = euroNextPort;
     }
 
     @Override
-    public Either<Error, List<OptionPriceDTO>> findAllOptions(Ticker ticker) {
+    public Either<Error, OptionPricesDTO> findAllOptions(Ticker ticker) {
 
-        var cached = cache.get(ticker.getOid());
+        //var cached = cache.get(ticker.getOid());
 
-        if (cached != null) {
-            return Either.right(cached);
-        } else {
-            try {
-                var result = new ArrayList<OptionPriceDTO>();
+        //if (cached != null) {
+        //    return Either.right(cached);
+        //} else {
 
-                client = getClient();
+        try {
+            var prices = new ArrayList<OptionPriceDTO>();
 
-                var tickerUrl = urlFor(ticker);
+            client = getClient();
 
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(tickerUrl))
-                        .header("Accept", "application/json")
-                        .GET()
-                        .build();
+            var tickerUrl = urlFor(ticker);
 
-                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(tickerUrl))
+                    .header("Accept", "application/json")
+                    .GET()
+                    .build();
 
-                if (response.statusCode() == 200) {
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode node = mapper.readTree(response.body());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                    JsonNode simple = node.get("simple");
-                    JsonNode dataArray = simple.get(0).get("data");
+            if (response.statusCode() == 200) {
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode node = mapper.readTree(response.body());
 
-                    for (var data : dataArray) {
-                        result.add(mapJsonNode(ticker, data, OptionType.CALL));
-                        result.add(mapJsonNode(ticker, data, OptionType.PUT));
-                    }
-                } else {
-                    var msg = String.format("GET request failed. Status code: %s", response.statusCode());
-                    return Either.left(new Error.BusinessError(msg));
+                JsonNode simple = node.get("simple");
+                JsonNode dataArray = simple.get(0).get("data");
+                var maturityDate = simple.get("maturityDate").asString();
+
+                for (var data : dataArray) {
+                    prices.add(mapJsonNode(ticker, data, OptionType.CALL));
+                    prices.add(mapJsonNode(ticker, data, OptionType.PUT));
                 }
-                cache.put(ticker.getOid(), result);
 
+                var result = new OptionPricesDTO(maturityDate, prices);
+                //cache.put(ticker.getOid(), result);
                 return Either.right(result);
+            } else {
+                var msg = String.format("GET request failed. Status code: %s", response.statusCode());
+                return Either.left(new Error.BusinessError(msg));
 
-            } catch (IOException | InterruptedException e) {
-                return Either.left(new Error.BusinessError(e.getMessage()));
             }
+
+        } catch (IOException | InterruptedException e) {
+            return Either.left(new Error.BusinessError(e.getMessage()));
         }
     }
 
+    /*
     @Override
     public Either<Error, OptionPriceDTO> findOption(StockOptionTicker ticker) {
         return Either.left(new Error.BusinessError("Not implemented"));
     }
+
+     */
 
     private String urlFor(Ticker ticker) {
         return String.format("http://localhost:%d/proxy/%s", euroNextPort, ticker.getTicker());
